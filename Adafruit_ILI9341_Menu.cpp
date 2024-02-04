@@ -27,6 +27,7 @@
   3.0   1/2022      kasprzak      fixed font issue with MEGA
 */
 
+#ifdef USE_ADAFRUIT_ILI9341
 #include <Adafruit_ILI9341_Menu.h>  
 
 EditMenu::EditMenu(Adafruit_ILI9341 *Display, bool EnableTouch) : TFTEditMenu<Adafruit_ILI9341, const GFXfont*>(Display, EnableTouch) {
@@ -43,3 +44,4 @@ EditMenu::EditMenu(Adafruit_ILI9341 *Display, bool EnableTouch) : TFTEditMenu<Ad
 
 ItemMenu::ItemMenu(Adafruit_ILI9341 *Display, bool EnableTouch) : TFTItemMenu<Adafruit_ILI9341, const GFXfont*>(Display, EnableTouch) {
 }
+#endif

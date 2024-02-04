@@ -415,9 +415,9 @@ void TFTEditMenu<T,F>::drawItems() {
     moreup = true;
   }
 
-  if (enablestate[currentID] == false) {
-    return;
-  }
+  // if (enablestate[currentID] == false) {
+  //   return;
+  // }
 
   // determine if we need to redraw the header and draw
   if ((currentID == 0) && (cr == 0)) {
@@ -1256,6 +1256,10 @@ void TFTItemMenu<T,F>::draw() {
   drawHeader(false, 0);
 
   drawItems();
+
+  if (currentID < totalID && currentID != 0 && !enablestate[currentID]) {
+    MoveDown();
+  }
 }
 
 template<typename T, typename F>
@@ -1311,9 +1315,9 @@ void TFTItemMenu<T,F>::drawItems() {
     moreup = true;
   }
 
-  if (enablestate[currentID] == false) {
-    return;
-  }
+  // if (enablestate[currentID] == false) {
+  //   return;
+  // }
 
   // determine if we need to redraw the header and draw
   if ((currentID == 0) && (cr == 0)) {
@@ -1420,15 +1424,17 @@ void TFTItemMenu<T,F>::MoveDown() {
 
   cr++;
   currentID++;
-  drawItems();
-  if (enablestate[currentID] == false) {
-    while (enablestate[currentID] == false) {
-      cr++;
-      currentID++;
-      drawItems();
-    }
+  drawItems();  // FIXME: n-squared much?
+  while (enablestate[currentID] == false) {
+    cr++;
+    currentID++;
+    drawItems();
   }
+}
 
+template<typename T, typename F>
+const char *TFTItemMenu<T,F>::getSelectedText() {
+  return itemlabel[currentID];
 }
 
 template<typename T, typename F>

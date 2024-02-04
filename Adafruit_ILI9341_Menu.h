@@ -36,6 +36,8 @@
 #ifndef ADAFRUITILI9341_MENU_H
 #define ADAFRUITILI9341_MENU_H
 
+#ifdef USE_ADAFRUIT_ILI9341
+
 #include "TFT_Menu.cpp"
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
@@ -59,5 +61,6 @@ protected:
 		d->setFont(font);
 	}
 };
+#endif
 
 #endif

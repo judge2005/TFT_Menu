@@ -184,6 +184,8 @@ public:
 
 	int selectRow();
 
+	const char *getSelectedText();
+	
 	void setTitleColors(uint16_t TitleTextColor, uint16_t TitleFillColor);
 
 	void setTitleBarSize(uint16_t TitleTop, uint16_t TitleLeft, uint16_t TitleWith, uint16_t TitleHeight);
